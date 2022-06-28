@@ -28,5 +28,6 @@ jobs:
         with:
           node-version: 18
       # Runs yarn test
+      - run: yarn install 
       - name: Yarn test
         run: cd app && yarn test --all --ci --debug
