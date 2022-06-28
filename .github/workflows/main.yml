@@ -62,6 +62,7 @@ jobs:
     - name: Terraform Format
       run: cd infrastructure/terraform && terraform fmt -check
 
+    - run: az login --service-principal -u ${{ secrets.AKS_APPID }} -p ${{ secrets.AKS_PASSWORD }} --tenant ${{ secrets.TENANT }}
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run:  cd infrastructure/terraform && terraform plan -var="appId=${{ secrets.AKS_APPID }}" -var="password=${{ secrets.AKS_PASSWORD }}"
