@@ -1,19 +1,19 @@
-# The Technology Template for Site Reliability Engineering
+# Schablone 📃
+
+**Schablone** 📃 is a technology template for [Site Reliability Engineering (SRE)](https://sre.google/sre-book/part-II-principles/) and includes the following tech stack:
+
+* Kubernetes
+* Terraform
+* Azure
+* Docker
+* Node/React
 
 ## Setup
 
-1. Log in or sign up for [Azure with free credit](https://azure.microsoft.com)
-2. Log in or sign up for [GitHub](https://github.com)
-3. Run `az ad sp create-for-rbac --skip-assignment`.
-4. Add `appId` and `password` as a GitHub Action Secret in your repo settings.
-
-## SRE Principles
-
-
-
-# app
-
-1. Build and push the image to Harbor:
-   * `docker build . -t core.harbor.domain/library/hello-node:v3`
-   * `docker push core.harbor.domain/library/hello-node:v3`
-   * ..
+1. Log in or sign up for [Azure with free credit](https://azure.microsoft.com) and install the Azure CLi on your system (e. g. `brew install azure-cli`)
+2. Run `az login` and follow the instructions
+3. Clone this repository
+4. Run `az ad sp create-for-rbac --skip-assignment` and copy the values
+5. Add `appId` and `password` as a GitHub Action Secret in your repo
+6. Navigate to `infrastructure/terraform` and run `terraform apply -var="appId=<your appId>" -var="password=<your password>"
+7. 

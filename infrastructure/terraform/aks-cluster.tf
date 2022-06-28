@@ -6,7 +6,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "default" {
   name     = "${random_pet.prefix.id}-rg"
-  location = "West US 2"
+  location = "East US"
 
   tags = {
     environment = "Demo"
@@ -22,7 +22,7 @@ resource "azurerm_kubernetes_cluster" "default" {
   default_node_pool {
     name            = "default"
     node_count      = 2
-    vm_size         = "Standard_D2_v2"
+    vm_size         = "standard_ds2_v2"
     os_disk_size_gb = 30
   }
 
