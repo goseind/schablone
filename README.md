@@ -1,17 +1,15 @@
 # The Technology Template for Site Reliability Engineering
 
-## Tutorial Steps
+## Setup
 
 1. Log in or sign up for [Azure with free credit](https://azure.microsoft.com)
 2. Log in or sign up for [GitHub](https://github.com)
-3. Set up Terraform and AKS Cluster:
-   1. 
+3. Run `az ad sp create-for-rbac --skip-assignment`.
+4. Add `appId` and `password` as a GitHub Action Secret in your repo settings.
+
+## SRE Principles
 
 
-# minikube
-
-1. Install minikube
-2. ..
 
 # app
 
