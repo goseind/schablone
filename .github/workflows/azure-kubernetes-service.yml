@@ -34,7 +34,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_CONTAINER_REGISTRY: "inerrabbitacr.azurecr.io"
+  AZURE_CONTAINER_REGISTRY: "finerrabbitacr.azurecr.io"
   CONTAINER_NAME: "azure-vote-front"
   RESOURCE_GROUP: "finer-rabbit-rg"
   CLUSTER_NAME: "finer-rabbit-aks"
