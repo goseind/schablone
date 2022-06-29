@@ -1,3 +1,5 @@
+[![CICD](https://github.com/goseind/schablone/actions/workflows/cicd.yml/badge.svg)](https://github.com/goseind/schablone/actions/workflows/cicd.yml)
+
 # Schablone 📃
 
 **Schablone** 📃 is a technology template for [Site Reliability Engineering (SRE)](https://sre.google/sre-book/part-II-principles/) and includes the following tech stack:
