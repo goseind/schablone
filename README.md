@@ -26,11 +26,12 @@
    ```
 
 6. [Create an Active Directory service principal account](https://learn.hashicorp.com/tutorials/terraform/aks#create-an-active-directory-service-principal-account) `az ad sp create-for-rbac --skip-assignment` and copy the values locally to use in the next step
-7. Navigate to `cd infrastructure/terraform` and run `terrafrom init` and then `terraform apply -var="appId=<your appId>" -var="password=<your password>"` with your credentials to provision the AKS cluster
-8. Add the AKS cluster to `kubectl` `az aks get-credentials --resource-group <rg-name> --name <aks-name>`
-9. [Create a Azure Container Registry](https://docs.microsoft.com/de-de/azure/container-registry/container-registry-get-started-azure-cli) `az acr create --resource-group <rg-name> --name <acr-name> --sku Basic` and copy the `loginServer` URL
-10. Add the ACR to AKS `az aks update -n myAKSCluster -g <rg-name> --attach-acr <acr-name>`
-11. Adjust the values in the [CI/CD workflow](.github/workflows/cicd.yml):
+7. Add your ACR URL to the Kubernetes Deployment [file](infrastructure/kubernetes/azure-vote-all-in-one-redis.yaml) in [line 60](https://github.com/goseind/schablone/blob/6ac7ad3d70c58ce19585aa94cedc74fcd28aedde/infrastructure/kubernetes/azure-vote-all-in-one-redis.yaml#L60) at `image: <your-acr>.azurecr.io/azure-vote-front:v1`
+8. Navigate to `cd infrastructure/terraform` and run `terrafrom init` and then `terraform apply -var="appId=<your appId>" -var="password=<your password>"` with your credentials to provision the AKS cluster
+9. Add the AKS cluster to `kubectl` `az aks get-credentials --resource-group <rg-name> --name <aks-name>`
+10. [Create a Azure Container Registry](https://docs.microsoft.com/de-de/azure/container-registry/container-registry-get-started-azure-cli) `az acr create --resource-group <rg-name> --name <acr-name> --sku Basic` and copy the `loginServer` URL
+11. Add the ACR to AKS `az aks update -n myAKSCluster -g <rg-name> --attach-acr <acr-name>`
+12. Adjust the values in the [CI/CD workflow](.github/workflows/cicd.yml):
    
    ```yml
    AZURE_CONTAINER_REGISTRY: "your-azure-container-registry"
