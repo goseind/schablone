@@ -18,7 +18,7 @@
 3. Clone this repository
 4. Run `az ad sp create-for-rbac --skip-assignment` and copy the values
 5. Add `appId` and `password` as a GitHub Action Secret in your repo
-6. Navigate to `infrastructure/terraform` and run `terraform apply -var="appId=<your appId>" -var="password=<your password>"
+6. Navigate to `infrastructure/terraform` and run `terraform apply -var="appId=<your appId>" -var="password=<your password>"`
 7. Add Container Registry to AKS `az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-name>`
 8. Adjust the values in the [CI/CD workflow](.github/workflows/cicd.yml):
    
@@ -34,3 +34,6 @@
 9.  Run CI/CD to deploy the example service in [azure-vote-all-in-one-redis](infrastructure/kubernetes/azure-vote-all-in-one-redis.yaml)
 10. Run `kubectl get service azure-vote-front --watch` to get the public IP and open it in the browser
 
+### CI/CD Workflow
+
+![](wf.png)

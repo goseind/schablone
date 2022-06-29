@@ -2,8 +2,12 @@ name: CICD
 
 on:
   push:
-    branches:
-      - "main"
+    # branches:
+    #   - "main"
+    paths:
+      - 'Dockerfile'
+      - '**.tf'
+      - 'infrastructure/kubernetes/**'
   workflow_dispatch:
 
 env:
