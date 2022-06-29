@@ -60,7 +60,7 @@ jobs:
     # Builds and pushes an image up to your Azure Container Registry
     - name: Build and push image to ACR
       run: |
-        az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} .
+        cd services/azure-vote/azure-vote && az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} .
 
   createSecret:
     permissions:
@@ -69,12 +69,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # Logs in with your Azure credentials
-    - name: Azure login
-      uses: azure/login@v1.4.3
+    - name: Log in with Azure
+      uses: azure/login@v1
       with:
-        client-id: ${{ secrets.AZURE_CLIENT_ID }}
-        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        creds: '${{ secrets.AZURE_CREDENTIALS }}'
       
     # Retrieves your Azure Kubernetes Service cluster's kubeconfig file
     - name: Get K8s context
@@ -116,12 +114,10 @@ jobs:
     - uses: actions/checkout@v3
     
     # Logs in with your Azure credentials
-    - name: Azure login
-      uses: azure/login@v1.4.3
+    - name: Log in with Azure
+      uses: azure/login@v1
       with:
-        client-id: ${{ secrets.AZURE_CLIENT_ID }}
-        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        creds: '${{ secrets.AZURE_CREDENTIALS }}'
       
     # Retrieves your Azure Kubernetes Service cluster's kubeconfig file
     - name: Get K8s context
